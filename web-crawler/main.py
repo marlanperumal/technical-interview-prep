@@ -13,12 +13,12 @@ async def crawl(base_url: str, max_depth: int = 2) -> list[str]:
     visited: set[str] = set()
 
     async def crawl_link(client: httpx.Client, link: str, depth: int = 0):
-        if depth > max_depth or link in visited:
+        print(depth, link)
+        if depth >= max_depth or link in visited:
             return
 
         visited.add(link)
 
-        print(depth, link)
         r = await client.get(link)
 
         html = r.text
