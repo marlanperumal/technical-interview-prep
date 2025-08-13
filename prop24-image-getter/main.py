@@ -3,7 +3,6 @@ import asyncio
 import re
 import os
 import argparse
-from urllib.parse import urlparse
 
 
 async def download_image(url):
