@@ -6,7 +6,7 @@ import json
 
 @dataclass
 class Node:
-    value: int = None
+    value: int | None = None
     left: Self | None = None
     right: Self | None = None
     next_id: ClassVar[int] = 0
@@ -58,15 +58,16 @@ def unserialize(stree: str) -> Node:
     return node_dict[tree[0]["id"]]
 
 
-node_1 = Node(10)
-node_2 = Node(12)
-node_3 = Node(14, node_1, node_2)
-node_4 = Node(16, None, node_3)
+if __name__ == "__main__":
+    node_1 = Node(10)
+    node_2 = Node(12)
+    node_3 = Node(14, node_1, node_2)
+    node_4 = Node(16, None, node_3)
 
-print(serialize(node_4))
-print(serialize(node_3))
-print(serialize(node_1))
+    print(serialize(node_4))
+    print(serialize(node_3))
+    print(serialize(node_1))
 
-s = serialize(node_4)
-print(unserialize(s))
-print(node_4)
+    s = serialize(node_4)
+    print(unserialize(s))
+    print(node_4)
