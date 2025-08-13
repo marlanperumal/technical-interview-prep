@@ -47,3 +47,4 @@ if __name__ == "__main__":
     print(make_change_dp([1, 2, 5], 8))
     print(make_change_dp([1, 2, 5], 18))
     print(make_change_dp([1, 2, 5, 7], 10))
+    print(make_change_dp([3, 5], 7))
