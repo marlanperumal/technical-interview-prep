@@ -1,16 +1,16 @@
 from dataclasses import dataclass
-from typing import Self, Deque
+from typing import Deque
 from collections import deque
 
 
 @dataclass
 class Node:
     value: int | None = None
-    left: Self | None = None
-    right: Self | None = None
+    left: "Node" | None = None
+    right: "Node" | None = None
 
 
-def serialize(base_node: Node) -> str:
+def serialize(base_node: Node | None) -> str:
     output: list[int] = []
 
     def dfs(node: Node | None):
@@ -26,12 +26,12 @@ def serialize(base_node: Node) -> str:
     return ",".join([str(i) for i in output])
 
 
-def unserialize(s: str) -> Node:
+def unserialize(s: str) -> Node | None:
     queue: Deque[int | None] = deque(
         [int(i) if i != "None" else None for i in s.split(",")]
     )
 
-    def dfs() -> Node:
+    def dfs() -> Node | None:
         value = queue.popleft()
         if value is None:
             return

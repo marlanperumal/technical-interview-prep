@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import ClassVar, Self, Deque
+from typing import ClassVar, Deque
 from collections import deque
 import json
 
@@ -7,8 +7,8 @@ import json
 @dataclass
 class Node:
     value: int | None = None
-    left: Self | None = None
-    right: Self | None = None
+    left: "Node" | None = None
+    right: "Node" | None = None
     next_id: ClassVar[int] = 0
     id: int | None = None
 
@@ -18,7 +18,7 @@ class Node:
             Node.next_id += 1
 
 
-def serialize(base_node: Node) -> str:
+def serialize(base_node: Node | None) -> str:
     nodes: list[dict] = []
     unvisited: Deque[Node] = deque([base_node])
 
